@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myapp.fashion.mapper.TagsMapper">
+
+    <resultMap id="tagsResultMap" type="myapp.fashion.entity.TagsEntity">
+        <result property="tagId" column="tagId" />
+        <result property="tagName" column="tagName" />
+    </resultMap>
+
+    <!-- 全タグを取得 -->
+    <select id="findAllTags" resultMap="tagsResultMap">
+        SELECT 
+            *
+        FROM 
+            tags
+    </select>
+
+    <!-- アイテム登録時に選択したタグを登録 -->
+    <insert id="insertItemTags">
+        INSERT INTO 
+            item_tags (
+                itemId,
+                tagId
+            )
+        VALUES (
+            #{itemId},
+            #{tagsId}
+        )
+    </insert>
+
+    <!-- 指定されたアイテムIDのタグを取得 -->
+    <select id="findTagsByItemId" resultMap="tagsResultMap">
+        SELECT 
+            t.tagId, 
+            t.tagName
+        FROM 
+            item_tags it
+        INNER JOIN 
+            tags t 
+            ON it.tagId = t.tagId
+        WHERE 
+            it.itemId = #{itemId}
+    </select>
+
+    <!-- 指定されたアイテムIDのタグを削除 -->
+    <delete id="deleteTagsByItemId">
+        DELETE FROM 
+            item_tags
+        WHERE 
+            itemId = #{itemId}
+    </delete>
+
+</mapper>

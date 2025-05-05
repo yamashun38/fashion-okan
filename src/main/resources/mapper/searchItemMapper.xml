@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myapp.fashion.mapper.SearchItemMapper">
+
+    <resultMap id="searchItemResultMap" type="myapp.fashion.entity.SearchItemEntity">
+        <result property="itemId" column="itemId" />
+        <result property="s3Url" column="s3Url" />
+    </resultMap>
+
+    <!-- アイテム検索 -->
+    <select id="searchItems" resultMap="searchItemResultMap">
+        SELECT 
+            DISTINCT i.itemId,
+            i.s3Url
+        FROM 
+            item i
+        <if test="selectedTagIds != null and selectedTagIds.size() > 0">
+            INNER JOIN (
+                SELECT
+                    itemid
+                FROM
+                    item_tags
+                WHERE
+                    tagId IN
+                    <foreach collection="selectedTagIds" item="tagId" open="(" separator="," close=")">
+                        #{tagId}
+                    </foreach>
+                GROUP BY
+                    itemId
+                HAVING
+                    COUNT(DISTINCT tagId) = #{selectedTagCount}
+                ) AS it 
+                ON i.itemId = it.itemId
+        </if>
+        <include refid="searchItemsWhere" />
+    </select>
+    
+    <sql id="searchItemsWhere">
+        <where>
+            <if test="itemName != null and itemName != ''">
+                AND i.itemName = #{itemName}
+            </if>
+
+            <choose>
+                <when test="startDate != null and endDate != null">
+                    AND i.date BETWEEN #{startDate} AND #{endDate}
+                </when>
+                <when test="startDate != null and endDate == null">
+                    AND i.date &gt;= #{startDate}
+                </when>
+                <when test="startDate == null and endDate != null">
+                    AND i.date &lt;= #{endDate}
+                </when>
+            </choose>
+
+            <if test="description != null and description != ''">
+                AND i.description LIKE CONCAT('%', #{description}, '%')
+            </if>
+            
+            <if test="favorite != null and favorite != ''">
+                AND i.favorite = 1
+            </if>
+        </where>
+    </sql>
+</mapper>

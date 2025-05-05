@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myapp.fashion.mapper.ItemMapper">
+
+    <resultMap id="itemResultMap" type="myapp.fashion.entity.ItemEntity">
+        <result property="itemId" column="itemId" />
+        <result property="s3Url" column="s3Url" />
+        <result property="itemName" column="itemName" />
+        <result property="date" column="date" />
+
+        <result property="description" column="description" />
+        <result property="favorite" column="favorite" />
+    </resultMap>
+
+    <!-- 全アイテムを取得 -->
+    <select id="findAllItems" resultMap="itemResultMap">
+        SELECT 
+            itemId,
+            s3Url
+        FROM 
+            item
+    </select>
+
+    <!-- 指定されたIDのアイテムを取得 -->
+    <select id="findItemById" resultMap="itemResultMap">
+        SELECT 
+            itemId,
+            s3Url,
+            itemName,
+            date,
+            tags,
+            description,
+            favorite
+        FROM 
+            item
+        WHERE 
+            itemId = #{itemId}
+    </select>
+
+    <!-- 指定されたIDのアイテム情報を変更 -->
+    <update id="updateItem">
+        UPDATE 
+            item
+        SET 
+            itemName = #{itemName},
+            date = #{date},
+            tags = #{tags},
+            description = #{description},
+            favorite = #{favorite}
+        WHERE 
+            itemId = #{itemId}
+    </update>
+
+    <!-- アイテムを登録 -->
+    <insert id="insertItem" useGeneratedKeys="true" keyProperty="itemId">
+        INSERT INTO 
+            item (
+                s3Url,
+                itemName,
+                date,
+                tags,
+                description,
+                favorite
+            )
+        VALUES (
+            #{s3Url},
+            #{itemName},
+            #{date},
+            #{tags},
+            #{description},
+            #{favorite}
+        )
+    </insert>
+
+    <!-- アイテムを削除 -->
+    <delete id="deleteItemById">
+        DELETE FROM 
+            item
+        WHERE 
+            itemId = #{itemId}
+    </delete>
+
+</mapper>

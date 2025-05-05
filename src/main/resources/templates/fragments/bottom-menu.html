@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head></head>
+
+<body>
+    <div th:fragment="bottom-menu" class="bottom-menu">
+        <a th:href="@{/all-items}" class="menu-icon">
+            <i class="bi bi-tags"></i>
+        </a>
+        <a th:href="@{/item-search}" class="menu-icon">
+            <i class="bi bi-search"></i>
+        </a>
+        <a th:href="@{/item-upload}" class="menu-icon">
+            <i class="bi bi-plus-circle"></i>
+        </a>
+        <a href="#" class="menu-icon">
+            <i class="bi bi-bookmark-star"></i>
+        </a>
+        <a href="#" class="menu-icon">
+            <i class="bi bi-gear"></i>
+        </a>
+    </div>
+</body>
+
+</html>

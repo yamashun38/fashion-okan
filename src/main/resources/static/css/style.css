@@ -1,0 +1,48 @@
+body {
+    padding-bottom: 80px;
+}
+
+.item-detail-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* 検索フォームの余白や調整 */
+#searchForm .form-control {
+    font-size: 0.9rem;
+}
+
+/* フラッシュメッセージの表示スタイル */
+.flash-message {
+    position: fixed;
+    top: 80px; /* 画面上部から少し下に */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(212, 237, 218, 0.95); /* Bootstrap alert-success 背景色 + α透明度 */
+    color: #155724; /* Bootstrap alert-success テキスト色 */
+    padding: 12px 24px;
+    border-radius: 6px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    font-weight: bold;
+    border: 1px solid #c3e6cb; /* Bootstrap alert-success 枠線 */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.flash-message.show {
+    opacity: 0.7;
+}
+
+#searchForm {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+/* #searchForm.open {
+    max-height: 1000px;
+    opacity: 1;
+} */
