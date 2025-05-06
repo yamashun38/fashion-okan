@@ -6,8 +6,13 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/yamashun?useSSL=false&serverTimezone=UTC
-    username: root
-    password: 13810.Huwata
+    username: ****
+    password: ****
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: myapp.fashion.entity
