@@ -5,9 +5,9 @@ spring:
     prefix: file:src/main/resources/templates/
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yamashun?useSSL=false&serverTimezone=UTC
-    username: ****
-    password: ****
+    url: jdbc:mysql://localhost:3306/yamashun?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME_FASHIONAPP}
+    password: ${DB_PASSWORD_FASHIONAPP}
   devtools:
     livereload:
       enabled: true
@@ -23,3 +23,6 @@ aws:
     access-key: ${AWS_ACCESS_KEY_ID_FASHIONAPP}
     secret-key: ${AWS_SECRET_ACCESS_KEY_FASHIONAPP}
   region: ap-northeast-1
+logging:
+  level:
+    "[org.springframework.boot.context.config]": ERROR
