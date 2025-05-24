@@ -44,7 +44,7 @@
     </select>
 
     <!-- 指定されたアイテムIDのタグを削除 -->
-    <delete id="deleteTagsByItemId">
+    <delete id="deleteItemTagsByItemId">
         DELETE FROM 
             item_tags
         WHERE 

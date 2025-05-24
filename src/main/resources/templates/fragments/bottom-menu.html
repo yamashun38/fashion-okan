@@ -7,18 +7,23 @@
     <div th:fragment="bottom-menu" class="bottom-menu">
         <a th:href="@{/all-items}" class="menu-icon">
             <i class="bi bi-tags"></i>
+            <p>一覧</p>
         </a>
         <a th:href="@{/item-search}" class="menu-icon">
             <i class="bi bi-search"></i>
+            <p>検索</p>
         </a>
         <a th:href="@{/item-upload}" class="menu-icon">
             <i class="bi bi-plus-circle"></i>
+            <p>新規</p>
         </a>
         <a href="#" class="menu-icon">
             <i class="bi bi-bookmark-star"></i>
+            <p>プリセット</p>
         </a>
-        <a href="#" class="menu-icon">
+        <a th:href="@{/setting}" class="menu-icon">
             <i class="bi bi-gear"></i>
+            <p>設定</p>
         </a>
     </div>
 </body>

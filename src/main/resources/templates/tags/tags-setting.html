@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASHION OKAN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+    <link rel="stylesheet" th:href="@{../css/bottom-menu.css}">
+    <script th:src="@{/js/bottom-menu.js}" defer></script>
+    <script th:src="@{/js/flash-message.js}" defer></script>
+    <script th:src="@{/js/item-detail.js}" defer></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- 共通ヘッダーの読み込み -->
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <!-- フラッシュメッセージ表示 -->
+    <div id="flashMessage" th:if="${flashMessage}" th:text="${flashMessage}"
+        class="alert alert-success flash-message d-none"></div>
+
+    <main class="flex-fill">
+        <div class="container mt-4">
+
+            <!-- タイトル -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">タグ設定</h2>
+
+                <!-- 編集ボタン -->
+                <a href="#" id="toggleEdit" class="text-dark fs-4">
+                    <i class="bi bi-pencil" title="タグ情報変更"></i>
+                </a>
+            </div>
+
+            <!-- <div class="row"> -->
+            <!-- <div class="col-12 col-md-8 col-lg-6">
+                    <form th:action="@{/tags-modify}" th:object="${tagDto}" method="post">
+                        <div class="mb-3">
+                            <label for="itemName" class="form-label fw-bold">名前</label>
+                            <input type="text" th:field="*{tag.tagName}" class="form-control"
+                                th:disabled="${editMode != null ? !editMode : true}" />
+                            <div class="text-danger mt-2" th:if="${#fields.hasErrors('itemName')}"
+                            th:errors="*{itemName}"></div>
+                        </div>
+                    </form> -->
+
+
+            <!-- タグ一覧表示 -->
+            <div class="list-group">
+                <div class="list-group-item d-flex justify-content-between align-items-center"
+                    th:each="tag : ${allTags}">
+
+                    <!-- タグ名表示(通常時) -->
+                    <span th:text="${tag.tagName}"></span>
+
+                    <!-- タグ名表示(編集時) -->
+                    <form th:action="@{/tags-modify}" th:object="${tagsDto}" method="post">
+                        <input type="text" th:value="${tag.tagName}" class="form-control tag-edit d-none" />
+                    </form>
+
+                    <!-- 削除ボタン -->
+                    <a href="#" class="text-dark fs-4 delete-tag-btn d-none" th:attr="data-id=${tag.tagId}">
+                        <i class="bi bi-trash" title="タグ削除"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- </div> -->
+    </main>
+
+    <!-- メニューの読み込み -->
+    <div th:replace="~{fragments/bottom-menu :: bottom-menu}"></div>
+</body>
+
+</html>

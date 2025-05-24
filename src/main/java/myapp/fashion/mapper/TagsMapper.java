@@ -28,5 +28,5 @@ public interface TagsMapper {
     /**
      * 指定されたアイテムIDに登録されているタグを削除
      */
-    void deleteTagsByItemId(Integer itemId);
+    void deleteItemTagsByItemId(Integer itemId);
 }

@@ -25,6 +25,11 @@
                 <h2 class="mb-0">アイテム新規登録</h2>
             </div>
 
+            <!-- エラーが発生した場合、エラーメッセージを表示 -->
+            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                <p th:text="${errorMessage}"></p>
+            </div>
+
             <!-- 登録フォーム -->
             <div class="row">
                 <div class="col-12 col-md-8 col-lg-6">

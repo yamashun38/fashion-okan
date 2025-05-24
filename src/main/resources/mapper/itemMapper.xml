@@ -8,7 +8,6 @@
         <result property="s3Url" column="s3Url" />
         <result property="itemName" column="itemName" />
         <result property="date" column="date" />
-
         <result property="description" column="description" />
         <result property="favorite" column="favorite" />
     </resultMap>
@@ -29,7 +28,6 @@
             s3Url,
             itemName,
             date,
-            tags,
             description,
             favorite
         FROM 
@@ -45,7 +43,6 @@
         SET 
             itemName = #{itemName},
             date = #{date},
-            tags = #{tags},
             description = #{description},
             favorite = #{favorite}
         WHERE 
@@ -59,7 +56,6 @@
                 s3Url,
                 itemName,
                 date,
-                tags,
                 description,
                 favorite
             )
@@ -67,14 +63,13 @@
             #{s3Url},
             #{itemName},
             #{date},
-            #{tags},
             #{description},
             #{favorite}
         )
     </insert>
 
-    <!-- アイテムを削除 -->
-    <delete id="deleteItemById">
+    <!-- itemテーブルからアイテムを削除 -->
+    <delete id="deleteItemByItemId">
         DELETE FROM 
             item
         WHERE 

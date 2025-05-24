@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FASHION OKAN</title>
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- 共通ヘッダーの読み込み -->
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main class="flex-fill">
+        <div class="container mt-4">
+
+            <!-- タイトル -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">システムエラー</h2>
+                <p th:text="${errorMessage}">不明なエラーが発生しました。</p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- メニューの読み込み -->
+    <div th:replace="~{fragments/bottom-menu :: bottom-menu}"></div>
+</body>
+
+</html>

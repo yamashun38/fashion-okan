@@ -25,6 +25,11 @@
                 <h2 class="mb-0">検索結果一覧</h2>
             </div>
 
+            <!-- エラーが発生した場合、エラーメッセージを表示 -->
+            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                <p th:text="${errorMessage}"></p>
+            </div>
+
             <!-- 検索条件変更 -->
             <a th:href="@{/item-search(
                 itemName=${searchItemDto.itemName},

@@ -3,6 +3,7 @@ package myapp.fashion.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.javassist.tools.rmi.ObjectNotFoundException;
 
 import myapp.fashion.dto.ItemDto;
 import myapp.fashion.entity.ItemEntity;
@@ -13,7 +14,7 @@ public interface ItemMapper {
     /**
      * 全アイテムを取得
      */
-    List<ItemEntity> findAllItems();
+    List<ItemEntity> findAllItems() throws ObjectNotFoundException;
 
     /**
      * 指定されたIDのアイテムを取得
@@ -23,17 +24,20 @@ public interface ItemMapper {
     /**
      * 指定されたIDのアイテム情報を更新
      */
-    // void updateItem(ItemEntity itemEntity);
     void updateItem(ItemDto itemDto);
 
     /**
      * アイテムを登録
      */
-    // void insertItem(ItemEntity itemEntity);
     void insertItem(ItemDto itemDto);
 
     /**
-     * アイテムを削除
+     * item_tagsテーブルからレコードを削除
      */
-    void deleteItemById(Integer id);
+    // void deleteItemTagsByItemId(Integer id);
+
+    /**
+     * itemテーブルからアイテムを削除
+     */
+    void deleteItemByItemId(Integer id);
 }

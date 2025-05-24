@@ -1,6 +1,7 @@
 package myapp.fashion.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,4 +20,5 @@ public class BaseEntity {
     private String tags;
     private String description;
     private Integer favorite;
+    private List<Integer> selectedTagIds;
 }

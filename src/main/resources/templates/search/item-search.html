@@ -26,6 +26,11 @@
                 <h2 class="mb-0">アイテム検索</h2>
             </div>
 
+            <!-- エラーが発生した場合、エラーメッセージを表示 -->
+            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                <p th:text="${errorMessage}"></p>
+            </div>
+
             <!-- 検索フォーム -->
             <div class="row">
                 <div class="col-12 col-md-8 col-lg-6">
@@ -38,7 +43,7 @@
 
                         <!-- 登録日(開始) -->
                         <div class="mb-3">
-                            <label for="date" class="form-label fw-bold">登録日</label>
+                            <label for="date" class="form-label fw-bold">着た日</label>
                             <input type="date" class="form-control" id="date" th:field="*{startDate}">
                         </div>
 
@@ -53,8 +58,6 @@
                             <label class="form-label fw-bold">タグ</label>
                             <div class="d-flex flex-wrap" id="tagList">
                                 <th:block th:each="tag : ${allTags}">
-                                    <!-- <button type="button" class="btn btn-outline-secondary m-1 tag-button"
-                                        th:data-id="${tag.tagId}" th:text="${tag.tagName}"></button> -->
                                     <button type="button" th:data-id="${tag.tagId}" th:text="${tag.tagName}"
                                         class="btn m-1 tag-button"
                                         th:classappend="${searchItemDto.selectedTagIds != null and #lists.contains(searchItemDto.selectedTagIds, tag.tagId)} ? 'btn-outline-primary' : 'btn-outline-secondary'">

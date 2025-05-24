@@ -22,22 +22,33 @@
 
     <main class="flex-fill">
         <div class="container mt-4">
+
+            <!-- タイトル -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="mb-0">アイテム詳細</h2>
+
+                <!-- 編集ボタン -->
                 <a href="#" id="toggleEdit" class="text-dark fs-4">
                     <i class="bi bi-pencil" title="登録情報変更"></i>
                 </a>
             </div>
-            <div class="row">
 
-                <!-- 画像表示部分 -->
-                <div class="col-12 col-md-6 text-center">
-                    <img th:src="${itemDto.s3Url}" alt="アイテム画像" class="item-detail-image mb-4">
-                </div>
+            <!-- エラーが発生した場合、エラーメッセージを表示 -->
+            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                <p th:text="${errorMessage}"></p>
+            </div>
+
+            <div class="row">
 
                 <!-- 詳細情報部分 -->
                 <div class="col-12 col-md-8 col-lg-6">
                     <form th:action="@{/item-update}" th:object="${itemDto}" method="post">
+
+                        <!-- 画像表示部分 -->
+                        <div class="col-12 col-md-6 text-center">
+                            <img th:src="*{s3Url}" alt="アイテム画像" class="item-detail-image mb-4">
+                            <input type="hidden" th:field="*{s3Url}" />
+                        </div>
 
                         <!-- アイテムID -->
                         <input type="hidden" th:field="*{itemId}" />
@@ -45,7 +56,8 @@
                         <!-- アイテム名 -->
                         <div class="mb-3">
                             <label for="itemName" class="form-label fw-bold">名前</label>
-                            <input type="text" th:field="*{itemName}" class="form-control" disabled>
+                            <input type="text" th:field="*{itemName}" class="form-control"
+                                th:disabled="${editMode != null ? !editMode : true}" />
                             <div class="text-danger mt-2" th:if="${#fields.hasErrors('itemName')}"
                                 th:errors="*{itemName}"></div>
                         </div>
@@ -53,19 +65,20 @@
                         <!-- 着た日(登録日) -->
                         <div class="mb-3">
                             <label for="date" class="form-label fw-bold">着た日</label>
-                            <input type="date" th:field="*{date}" class="form-control" disabled>
+                            <input type="date" th:field="*{date}" class="form-control"
+                                th:disabled="${editMode != null ? !editMode : true}" />
                         </div>
 
                         <!-- タグ -->
                         <div class="mb-3">
                             <label class="form-label fw-bold">タグ</label><br>
                             <!-- 編集不可のとき（＝初期表示） 選択されているタグのみ表示 -->
-                            <div id="selectedTagsView">
+                            <div id="selectedTagsView" th:classappend="${editMode != null ? 'd-none' : ''}">
                                 <span th:each="tag : ${selectedTags}" class="btn btn-outline-primary m-1"
                                     th:text="${tag.tagName}">タグ</span>
                             </div>
                             <!-- 編集可能のとき（＝編集ボタン押下後） 全タグを表示 -->
-                            <div id="allTagsView" class="d-none">
+                            <div id="allTagsView" th:classappend="${editMode == null ? 'd-none' : ''}">
                                 <button type="button" th:each="tag : ${allTags}" th:data-id="${tag.tagId}"
                                     th:data-selected="${#lists.contains(selectedTags, tag)}" th:text="${tag.tagName}"
                                     class="btn m-1 tag-button"
@@ -78,7 +91,8 @@
                         <!-- 説明 -->
                         <div class="mb-3">
                             <label for="description" class="form-label fw-bold">説明</label>
-                            <input type="text" th:field="*{description}" class="form-control" disabled>
+                            <input type="text" th:field="*{description}" class="form-control"
+                                th:disabled="${editMode != null ? !editMode : true}" />
                             <div class="text-danger mt-2" th:if="${#fields.hasErrors('description')}"
                                 th:errors="*{description}"></div>
                         </div>
@@ -86,7 +100,8 @@
                         <!-- お気に入り -->
                         <div class="mb-3 form-check">
                             <label for="favorite" class="form-check-label">お気に入り</label>
-                            <input type="checkbox" th:field="*{favorite}" value="1" id="favorite" class="form-check-input" disabled>
+                            <input type="checkbox" th:field="*{favorite}" value="1" id="favorite"
+                                class="form-check-input" th:disabled="${editMode != null ? !editMode : true}" />
                         </div>
 
                         <!-- 登録 -->
@@ -99,8 +114,8 @@
 
             <!-- アイテム削除ボタン -->
             <div class="d-grid gap-2">
-                <a th:href="@{/delete-item/{itemId}(itemId=${itemDto.itemId})}" class="btn btn-danger" id="deleteItemBtn"
-                    th:data-id="${itemDto.itemId}">削除</a>
+                <a th:href="@{/delete-item/{itemId}(itemId=${itemDto.itemId})}" class="btn btn-danger"
+                    id="deleteItemBtn" th:data-id="${itemDto.itemId}">削除</a>
             </div>
         </div>
     </main>

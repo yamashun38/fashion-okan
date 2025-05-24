@@ -10,7 +10,6 @@
     <link rel="stylesheet" th:href="@{../css/style.css}">
     <link rel="stylesheet" th:href="@{../css/bottom-menu.css}">
     <script th:src="@{/js/bottom-menu.js}" defer></script>
-    <script th:src="@{/js/flash-message.js}" defer></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -18,31 +17,15 @@
     <!-- 共通ヘッダーの読み込み -->
     <div th:replace="~{fragments/header :: header}"></div>
 
-    <!-- フラッシュメッセージ表示 -->
-    <div id="flashMessage" th:if="${flashMessage}" th:text="${flashMessage}"
-        class="alert alert-success flash-message d-none"></div>
-
     <main class="flex-fill">
         <div class="container mt-4">
 
             <!-- タイトル -->
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="mb-0">アイテム一覧</h2>
+                <h2 class="mb-0">設定</h2>
             </div>
 
-            <!-- エラーが発生した場合、エラーメッセージを表示 -->
-            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
-                <p th:text="${errorMessage}"></p>
-            </div>
-
-            <!-- アイテム一覧表示 -->
-            <div class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-3">
-                <div class="col" th:each="item : ${items}">
-                    <a th:href="@{/item-detail/{id}(id=${item.itemId})}">
-                        <img th:src="${item.s3Url}" alt="アイテム画像" class="img-fluid rounded shadow-sm">
-                    </a>
-                </div>
-            </div>
+            <a th:href="@{/tags-setting}">タグ設定</a>
         </div>
     </main>
 
