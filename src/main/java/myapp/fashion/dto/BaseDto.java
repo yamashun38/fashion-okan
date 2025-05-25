@@ -12,6 +12,7 @@ import lombok.Data;
 @Data
 public class BaseDto {
 
+    private Integer userId;
     private Integer itemId;
     private String s3Url;
 
@@ -22,7 +23,7 @@ public class BaseDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     
-    private String tags;
+    // private String tags;
 
     @Size(max = 200, message = "説明は200文字以内で入力してください")
     private String description;

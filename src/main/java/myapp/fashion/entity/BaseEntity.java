@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 public class BaseEntity {
 
+    private Integer userId;
     private Integer itemId;
     private String s3Url;
     private String itemName;
@@ -17,7 +18,7 @@ public class BaseEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     
-    private String tags;
+    // private String tags;
     private String description;
     private Integer favorite;
     private List<Integer> selectedTagIds;

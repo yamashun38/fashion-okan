@@ -1,4 +1,4 @@
-package myapp.fashion.controller;
+package myapp.fashion.controller.setting;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

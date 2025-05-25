@@ -1,4 +1,4 @@
-package myapp.fashion.controller;
+package myapp.fashion.controller.tags;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 import myapp.fashion.dto.TagsDto;
-import myapp.fashion.logic.TagsLogic;
+import myapp.fashion.logic.tags.TagsLogic;
 
 @Controller
 public class TagsController {

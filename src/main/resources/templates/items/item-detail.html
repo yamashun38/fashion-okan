@@ -114,7 +114,7 @@
 
             <!-- アイテム削除ボタン -->
             <div class="d-grid gap-2">
-                <a th:href="@{/delete-item/{itemId}(itemId=${itemDto.itemId})}" class="btn btn-danger"
+                <a th:href="@{/delete-item/{id}(id=${itemDto.itemId})}" class="btn btn-danger"
                     id="deleteItemBtn" th:data-id="${itemDto.itemId}">削除</a>
             </div>
         </div>

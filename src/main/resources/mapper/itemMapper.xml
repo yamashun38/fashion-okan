@@ -4,7 +4,8 @@
 <mapper namespace="myapp.fashion.mapper.ItemMapper">
 
     <resultMap id="itemResultMap" type="myapp.fashion.entity.ItemEntity">
-        <result property="itemId" column="itemId" />
+        <id property="itemId" column="itemId" />
+        <result property="userId" column="userId" />
         <result property="s3Url" column="s3Url" />
         <result property="itemName" column="itemName" />
         <result property="date" column="date" />
@@ -15,8 +16,13 @@
     <!-- 全アイテムを取得 -->
     <select id="findAllItems" resultMap="itemResultMap">
         SELECT 
+            userId,
             itemId,
-            s3Url
+            s3Url,
+            itemName,
+            date,
+            description,
+            favorite
         FROM 
             item
     </select>
@@ -24,6 +30,7 @@
     <!-- 指定されたIDのアイテムを取得 -->
     <select id="findItemById" resultMap="itemResultMap">
         SELECT 
+            userId,
             itemId,
             s3Url,
             itemName,
@@ -53,6 +60,7 @@
     <insert id="insertItem" useGeneratedKeys="true" keyProperty="itemId">
         INSERT INTO 
             item (
+                userId,
                 s3Url,
                 itemName,
                 date,
@@ -60,6 +68,7 @@
                 favorite
             )
         VALUES (
+            #{userId},
             #{s3Url},
             #{itemName},
             #{date},
@@ -69,7 +78,7 @@
     </insert>
 
     <!-- itemテーブルからアイテムを削除 -->
-    <delete id="deleteItemByItemId">
+    <delete id="deleteItemById">
         DELETE FROM 
             item
         WHERE 

@@ -4,17 +4,28 @@
 <mapper namespace="myapp.fashion.mapper.SearchItemMapper">
 
     <resultMap id="searchItemResultMap" type="myapp.fashion.entity.SearchItemEntity">
-        <result property="itemId" column="itemId" />
+        <id property="itemId" column="itemId" />
+        <result property="userId" column="userId" />
         <result property="s3Url" column="s3Url" />
+        <result property="itemName" column="itemName" />
+        <result property="date" column="date" />
+        <result property="description" column="description" />
+        <result property="favorite" column="favorite" />
     </resultMap>
 
     <!-- アイテム検索 -->
     <select id="searchItems" resultMap="searchItemResultMap">
         SELECT 
             DISTINCT i.itemId,
-            i.s3Url
+            i.s3Url,
+            i.userId,
+            i.itemName,
+            i.date,
+            i.description,
+            i.favorite
         FROM 
             item i
+        <!-- 検索条件にタグが含まれている場合はINNER JOINする -->
         <if test="selectedTagIds != null and selectedTagIds.size() > 0">
             INNER JOIN (
                 SELECT
@@ -38,6 +49,10 @@
     
     <sql id="searchItemsWhere">
         <where>
+            <if test="userId != null">
+                AND i.userId = #{userId}
+            </if>
+
             <if test="itemName != null and itemName != ''">
                 AND i.itemName = #{itemName}
             </if>
@@ -58,7 +73,7 @@
                 AND i.description LIKE CONCAT('%', #{description}, '%')
             </if>
             
-            <if test="favorite != null and favorite != ''">
+            <if test="favorite != null">
                 AND i.favorite = 1
             </if>
         </where>

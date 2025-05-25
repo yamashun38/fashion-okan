@@ -1,4 +1,4 @@
-package myapp.fashion.logic;
+package myapp.fashion.logic.tags;
 
 import java.util.List;
 
