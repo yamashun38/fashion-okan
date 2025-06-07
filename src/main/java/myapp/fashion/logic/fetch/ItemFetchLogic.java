@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import myapp.fashion.commom.exception.BusinessException;
 import myapp.fashion.converter.GenericConverter;
-import myapp.fashion.dto.ItemDto;
-import myapp.fashion.dto.SearchItemDto;
-import myapp.fashion.entity.ItemEntity;
+import myapp.fashion.dto.item.ItemDto;
+import myapp.fashion.dto.item.SearchItemDto;
+import myapp.fashion.entity.item.ItemEntity;
 import myapp.fashion.mapper.ItemMapper;
 import myapp.fashion.mapper.SearchItemMapper;
 

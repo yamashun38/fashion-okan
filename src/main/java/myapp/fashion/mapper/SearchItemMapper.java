@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import myapp.fashion.dto.SearchItemDto;
-import myapp.fashion.entity.SearchItemEntity;
+import myapp.fashion.dto.item.SearchItemDto;
+import myapp.fashion.entity.item.SearchItemEntity;
 
 @Mapper
 public interface SearchItemMapper {

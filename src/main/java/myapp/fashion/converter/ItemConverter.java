@@ -7,8 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import myapp.fashion.dto.ItemDto;
-import myapp.fashion.entity.ItemEntity;
+import myapp.fashion.dto.item.ItemDto;
+import myapp.fashion.entity.item.ItemEntity;
 
 @Component
 public class ItemConverter {

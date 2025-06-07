@@ -15,8 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 import myapp.fashion.commom.exception.BusinessException;
-import myapp.fashion.dto.ItemDto;
-import myapp.fashion.dto.TagsDto;
+import myapp.fashion.dto.item.ItemDto;
+import myapp.fashion.dto.tag.TagsDto;
 import myapp.fashion.logic.entry.ItemEntryLogic;
 import myapp.fashion.logic.tags.TagsLogic;
 

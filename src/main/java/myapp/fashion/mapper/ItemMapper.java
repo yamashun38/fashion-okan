@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import myapp.fashion.dto.ItemDto;
-import myapp.fashion.entity.ItemEntity;
+import myapp.fashion.dto.item.ItemDto;
+import myapp.fashion.entity.item.ItemEntity;
 
 @Mapper
 public interface ItemMapper {

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
-import myapp.fashion.dto.TagsDto;
+import myapp.fashion.dto.tag.TagsDto;
 import myapp.fashion.logic.tags.TagsLogic;
 
 @Controller

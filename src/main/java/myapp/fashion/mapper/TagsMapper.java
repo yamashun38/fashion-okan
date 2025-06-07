@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import myapp.fashion.entity.TagsEntity;
+import myapp.fashion.entity.tag.TagsEntity;
 
 @Mapper
 public interface TagsMapper {

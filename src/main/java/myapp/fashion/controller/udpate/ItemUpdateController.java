@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 import myapp.fashion.commom.exception.BusinessException;
-import myapp.fashion.dto.ItemDto;
+import myapp.fashion.dto.item.ItemDto;
 import myapp.fashion.logic.fetch.ItemFetchLogic;
 import myapp.fashion.logic.tags.TagsLogic;
 import myapp.fashion.logic.update.ItemUpdateLogic;

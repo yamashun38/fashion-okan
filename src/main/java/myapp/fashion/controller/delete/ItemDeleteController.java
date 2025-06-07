@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import myapp.fashion.commom.exception.BusinessException;
-import myapp.fashion.dto.ItemDto;
+import myapp.fashion.dto.item.ItemDto;
 import myapp.fashion.logic.delete.ItemDeleteLogic;
 import myapp.fashion.logic.fetch.ItemFetchLogic;
 

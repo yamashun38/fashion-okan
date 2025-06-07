@@ -1,8 +1,11 @@
-package myapp.fashion.dto;
+package myapp.fashion.dto.tag;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+/**
+ * タグDTO
+ */
 @Data
 public class TagsDto {
 

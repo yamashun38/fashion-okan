@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import myapp.fashion.commom.exception.BusinessException;
 import myapp.fashion.converter.GenericConverter;
-import myapp.fashion.dto.TagsDto;
+import myapp.fashion.dto.tag.TagsDto;
 import myapp.fashion.mapper.TagsMapper;
 
 @Component

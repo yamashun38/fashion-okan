@@ -7,7 +7,7 @@ import org.springframework.util.CollectionUtils;
 
 import lombok.extern.slf4j.Slf4j;
 import myapp.fashion.commom.exception.BusinessException;
-import myapp.fashion.dto.ItemDto;
+import myapp.fashion.dto.item.ItemDto;
 import myapp.fashion.mapper.ItemMapper;
 import myapp.fashion.mapper.TagsMapper;
 

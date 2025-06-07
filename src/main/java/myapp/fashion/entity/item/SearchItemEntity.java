@@ -1,4 +1,4 @@
-package myapp.fashion.entity;
+package myapp.fashion.entity.item;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package myapp.fashion.dto;
+package myapp.fashion.dto.item;
 
 import java.time.LocalDate;
 
